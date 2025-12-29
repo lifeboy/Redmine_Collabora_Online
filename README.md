@@ -13,11 +13,6 @@ The plugin has been successfully implemented and verified:
 - **✅ View Integration**: Plugin view override properly loaded and rendered
 - **✅ Logging Verified**: Debug logs confirm proper execution flow
 
-### Verified Test Case
-- Issue #109 contains attachments including `Absa TPPP design spec.docx` (Attachment #95)
-- Collabora buttons successfully render for all office document attachments
-- Buttons link to correct routes: `/collabora_online/view/95` and `/collabora_online/edit/95`
-
 ## Supported Formats
 
 ### Microsoft Office
@@ -66,7 +61,7 @@ The plugin has been successfully implemented and verified:
 1. **Clone/Extract the plugin** to your Redmine plugins directory:
    ```bash
    cd /var/www/redmine/plugins
-   # Plugin should be in redmine_collabora_online directory
+   # Plugin should be in the redmine_collabora_online directory
    ```
 
 2. **Run migrations** (if any):
@@ -79,6 +74,9 @@ The plugin has been successfully implemented and verified:
    ```bash
    # If using Puma
    sudo systemctl restart redmine
+
+   # If running Apache2/Passenger
+   sudo touch /var/www/redmine/tmp/restart.txt
    
    # Or manually restart your application server
    ```
@@ -87,7 +85,7 @@ The plugin has been successfully implemented and verified:
    - Go to **Administration** → **Plugins**
    - Find "Redmine Collabora Online" in the list
    - Click **Configure** (gear icon)
-   - Enter your Collabora Online server URL (e.g., `https://office.abellardss.co.za`)
+   - Enter your Collabora Online server URL (e.g., `https://office.myco.co.za`)
    - Enable the plugin by checking the "Enable Collabora Online" checkbox
    - Click **Save**
 
@@ -351,6 +349,12 @@ For issues or questions:
 This plugin is part of the Redmine installation.
 
 ## Changelog
+
+### Versopm 1.0.2 (2025-12-29)
+- Fix saving documents back to Redmine after editing them.
+
+### Version 1.0.1 (2025-12-28)
+- Fix some formatting and settings errors
 
 ### Version 1.0.0 (2025-12-27)
 - Initial release
