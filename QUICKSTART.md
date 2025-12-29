@@ -50,7 +50,7 @@ Or if using manual startup, restart your application server.
 4. Click the **Configure** button (⚙️ icon)
 5. Enter your Collabora Online server URL:
    ```
-   https://office.abellardss.co.za
+   https://office.myco.co.za
    ```
 6. Ensure "Enable Collabora Online" checkbox is checked
 7. Click **Save**
@@ -146,107 +146,6 @@ redmine_collabora_online/
 │       └── de.yml                    # German translations
 └── init.rb                           # Plugin initialization
 ```
-
-## Troubleshooting
-
-### Plugin Not Showing in Administration
-- Restart Redmine: `sudo systemctl restart redmine`
-- Check plugin directory: `/var/www/redmine/plugins/redmine_collabora_online/`
-- Verify init.rb exists and is readable
-
-### Buttons Not Appearing on Attachments
-1. Check plugin is enabled in Admin → Plugins
-2. Verify Collabora URL is configured
-3. Make sure the file format is supported (see list above)
-4. Check user has permission to view the container
-
-### "Collabora Online is not configured" Error
-- Go to Admin → Plugins → Configure Collabora Online
-- Enter the server URL: `https://office.abellardss.co.za`
-- Click Save
-
-### Document Won't Open in Editor
-- Verify you have edit permission for the issue/project
-- Check Collabora server is accessible (HTTPS)
-- Ensure you're using a modern browser
-- Disable browser popup blocker
-
-### WOPI Token Errors
-- Verify Redmine is accessible via HTTPS
-- Check Setting.host_name is configured correctly
-- Ensure Collabora server can reach Redmine server
-
-## Reverting Changes
-
-If you need to remove the plugin:
-
-```bash
-# Disable the plugin
-cd /var/www/redmine
-# Remove the plugin directory
-rm -rf plugins/redmine_collabora_online
-
-# Restart Redmine
-sudo systemctl restart redmine
-
-# Revert git changes (if using checkpoint)
-git reset --hard HEAD~1
-```
-
-## Git Checkpoint
-
-The plugin has been committed to git as checkpoint:
-```bash
-cd /var/www/redmine
-git log --oneline | head -5
-# Should show: "Add Redmine Collabora Online plugin for office document integration"
-```
-
-To revert to before the plugin was added:
-```bash
-cd /var/www/redmine
-git reset --hard HEAD~1
-```
-
-## Contact & Support
-
-For detailed documentation, see: `/var/www/redmine/plugins/redmine_collabora_online/README.md`
-
-## Key Config Files
-
-### Collabora Server URL
-- **Location**: Administration → Plugins → Collabora Online
-- **Setting**: `plugin_redmine_collabora_online.collabora_url`
-- **Default**: `https://office.abellardss.co.za`
-- **Required**: Yes
-
-### Enable/Disable Plugin
-- **Location**: Administration → Plugins → Collabora Online
-- **Setting**: `plugin_redmine_collabora_online.enable_collabora`
-- **Default**: `true`
-- **Type**: Boolean
-
-## What Happens When User Clicks "Edit in Collabora"
-
-1. User clicks "Edit in Collabora" button
-2. Plugin validates:
-   - User is logged in
-   - User has permission to edit the container
-   - Collabora server URL is configured
-3. Plugin generates WOPI URL with secure token
-4. Collabora Online iframe loads with document
-5. User can edit in real-time
-6. Changes are saved back to Collabora/Redmine
-
-## Next Features (Optional Enhancements)
-
-The plugin provides a solid foundation for future enhancements:
-- Document version history
-- Collaborative editing notifications
-- Comment integration
-- File locking during editing
-- Automatic backup to Redmine
-- Format conversion
 
 ## Success Indicators
 
