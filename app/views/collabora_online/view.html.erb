@@ -1,0 +1,71 @@
+<div class="collabora-viewer">
+  <div class="collabora-header">
+    <h2><%= @attachment.filename %></h2>
+    <div class="collabora-actions">
+      <%= link_to 'Download', download_named_attachment_url(@attachment), class: 'btn btn-default' %>
+      <% if @can_edit %>
+        <%= link_to 'Edit', { action: 'edit', id: @attachment.id }, class: 'btn btn-primary' %>
+      <% end %>
+      <% if @attachment.container.is_a?(Issue) %>
+        <%= link_to 'Back to Issue', issue_path(@attachment.container), class: 'btn btn-default' %>
+      <% elsif @attachment.container.is_a?(Project) %>
+        <%= link_to 'Back to Project', project_path(@attachment.container), class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="collabora-container">
+    <% if @collabora_url %>
+      <iframe 
+        id="collabora-frame"
+        src="<%= @collabora_url %>" 
+        width="100%" 
+        height="800px"
+        frameborder="0"
+        allowfullscreen="allowfullscreen">
+      </iframe>
+    <% else %>
+      <div class="alert alert-warning">
+        <%= t('label_collabora_not_configured') %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .collabora-viewer {
+    padding: 10px;
+  }
+  
+  .collabora-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .collabora-header h2 {
+    margin: 0;
+    flex: 1;
+  }
+  
+  .collabora-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .collabora-container {
+    width: 100%;
+    height: 90vh;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  #collabora-frame {
+    width: 100%;
+    height: 100%;
+  }
+</style>

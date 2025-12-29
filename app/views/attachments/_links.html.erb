@@ -1,0 +1,66 @@
+<!-- PLUGIN_VERSION_COLLABORA_ONLINE_LOADED_SUCCESSFULLY -->
+<!-- This view is from the Collabora Online plugin -->
+<% if defined?(Rails) && Rails.logger %>
+  <% Rails.logger.info "[Collabora Online] Rendering attachments/links partial from PLUGIN VERSION" %>
+<% end %>
+<div class="attachments">
+<div class="contextual">
+  <%= link_to(sprite_icon('edit', l(:label_edit_attachments)),
+              container_attachments_edit_path(container),
+              :title => l(:label_edit_attachments),
+              :class => 'icon-only icon-edit '
+             ) if options[:editable] %>
+  <%= link_to(sprite_icon('download', l(:label_download_all_attachments)),
+              container_attachments_download_path(container),
+              :title => l(:label_download_all_attachments),
+              :class => 'icon-only icon-download '
+             ) if attachments.size > 1 %>
+</div>
+<table>
+<% for attachment in attachments %>
+<tr>
+  <td>
+    <%= link_to_attachment attachment, class: 'icon icon-attachment ', icon: 'attachment' -%>
+    <span class="size">(<%= number_to_human_size attachment.filesize %>)</span>
+    <%= link_to_attachment attachment, class: 'icon-only icon-download ', title: l(:button_download), download: true, icon: 'download' -%>
+    <% is_office = RedmineCollaboraOnline::DocumentHelper.is_office_document?(attachment) %>
+    <% is_enabled = RedmineCollaboraOnline.is_enabled? %>
+    <% if defined?(Rails) && Rails.logger && is_office %>
+      <% Rails.logger.info "[Collabora Online] Office document found: #{attachment.filename} (#{attachment.id}) - Plugin enabled: #{is_enabled}" %>
+    <% end %>
+    <% if is_office && is_enabled -%>
+      <%= link_to sprite_icon('eye'), collabora_online_view_path(attachment.id), class: 'icon icon-eye', title: l(:'label_collabora_view'), target: '_blank', rel: 'noopener noreferrer' -%>
+      <% if RedmineCollaboraOnline::DocumentHelper.can_edit?(attachment, User.current) -%>
+        <%= link_to sprite_icon('edit'), collabora_online_edit_path(attachment.id), class: 'icon icon-edit', title: l(:'label_collabora_edit'), target: '_blank', rel: 'noopener noreferrer' -%>
+      <% end -%>
+    <% end -%>
+  </td>
+  <td><%= attachment.description unless attachment.description.blank? %></td>
+  <td>
+    <% if options[:author] %>
+      <span class="author"><%= attachment.author %>, <%= format_time(attachment.created_on) %></span>
+    <% end %>
+  </td>
+  <td>
+    <% if options[:deletable] %>
+      <%= link_to sprite_icon('del', l(:button_delete)), attachment_path(attachment),
+                  :data => {:confirm => l(:text_are_you_sure)},
+                  :method => :delete,
+                  :class => 'delete icon-only icon-del ',
+                  :title => l(:button_delete) %>
+    <% end %>
+  </td>
+</tr>
+<% end %>
+</table>
+<% if defined?(thumbnails) && thumbnails %>
+  <% images = attachments.select(&:thumbnailable?) %>
+  <% if images.any? %>
+  <div class="thumbnails">
+    <% images.each do |attachment| %>
+      <div><%= thumbnail_tag(attachment) %></div>
+    <% end %>
+  </div>
+  <% end %>
+<% end %>
+</div>

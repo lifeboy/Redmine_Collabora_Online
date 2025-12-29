@@ -1,0 +1,55 @@
+<div class="box">
+  <h3><%= t('label_collabora_settings') %></h3>
+  
+  <p>
+    <label for="settings_collabora_url"><%= t('label_collabora_url') %></label>
+    <%= text_field_tag 'settings[collabora_url]', @settings['collabora_url'], 
+        class: 'full-width',
+        placeholder: 'https://office.example.com' %>
+    <br /><em class="info"><%= t('help_collabora_url') %></em>
+  </p>
+
+  <p>
+    <label for="settings_wopi_host"><%= t('label_wopi_host') %></label>
+    <%= text_field_tag 'settings[wopi_host]', @settings['wopi_host'], 
+        class: 'full-width',
+        placeholder: 'https://redmine.internal or leave blank to use default' %>
+    <br /><em class="info"><%= t('help_wopi_host') %></em>
+  </p>
+
+  <p>
+    <label for="settings_enable_collabora"><%= t('label_enable_collabora') %></label>
+    <%= hidden_field_tag 'settings[enable_collabora]', '0', :id => nil %>
+    <%= check_box_tag 'settings[enable_collabora]', 'true',
+        @settings['enable_collabora'] == 'true' || @settings['enable_collabora'].nil? %>
+    <br /><em class="info"><%= t('help_enable_collabora') %></em>
+  </p>
+</div>
+
+<div class="box">
+  <h3><%= t('label_supported_formats') %></h3>
+  <p>
+    <em class="info"><%= t('text_supported_formats') %></em>
+  </p>
+  <p>
+    <label>Microsoft Office</label>
+    <input type="text" value=".docx, .doc, .xlsx, .xls, .pptx, .ppt" readonly class="full-width" />
+  </p>
+  <p>
+    <label>LibreOffice/OpenDocument</label>
+    <input type="text" value=".odt, .ods, .odp" readonly class="full-width" />
+  </p>
+  <p>
+    <label>Other</label>
+    <input type="text" value=".rtf, .csv, .txt" readonly class="full-width" />
+  </p>
+</div>
+
+<div class="box">
+  <h3><%= t('label_permissions') %></h3>
+  <p>
+    <em class="info"><%= t('text_permissions_info').html_safe %></em>
+  </p>
+</div>
+
+

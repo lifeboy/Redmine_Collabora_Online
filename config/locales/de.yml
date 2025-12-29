@@ -1,0 +1,15 @@
+de:
+  label_collabora_settings: "Collabora Online Einstellungen"
+  label_collabora_url: "Collabora Server URL"
+  label_collabora_view: "In Collabora ansehen"
+  label_collabora_edit: "In Collabora bearbeiten"
+  label_collabora_editing: "Bearbeitung"
+  label_collabora_not_configured: "Collabora Online ist nicht konfiguriert. Bitte konfigurieren Sie die Server-URL in den Plugin-Einstellungen."
+  label_enable_collabora: "Collabora Online aktivieren"
+  label_supported_formats: "Unterstützte Formate"
+
+  help_collabora_url: "Die URL zu Ihrem Collabora Online Server (z.B. https://office.abellardss.co.za)"
+  help_enable_collabora: "Aktivieren oder deaktivieren Sie die Collabora Online Integration"
+
+  text_supported_formats: "Die folgenden Dokumentformate werden für das Anzeigen und Bearbeiten in Collabora Online unterstützt:"
+  text_permissions_info: "Der Dokumentzugriff wird durch Redmine-Berechtigungen gesteuert. Benutzer müssen über die entsprechenden Berechtigungen zum Anzeigen und Bearbeiten von Dokumenten verfügen."

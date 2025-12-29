@@ -1,0 +1,52 @@
+/* Collabora Online Plugin Styles */
+
+.collabora-view-btn,
+.collabora-edit-btn {
+  display: inline-block;
+  padding: 2px 6px;
+  margin: 0 2px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #333;
+  vertical-align: middle;
+}
+
+.collabora-view-btn:hover,
+.collabora-edit-btn:hover {
+  background-color: #e8e8e8;
+  border-color: #999;
+}
+
+.collabora-view-btn img,
+.collabora-edit-btn img {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.collabora-viewer,
+.collabora-editor {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collabora-header {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 4px 4px 0 0;
+}
+
+.collabora-container {
+  position: relative;
+  background-color: #f5f5f5;
+}
+
+.collabora-container iframe {
+  display: block;
+  background-color: #fff;
+}

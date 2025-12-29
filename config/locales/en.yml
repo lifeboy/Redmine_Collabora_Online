@@ -1,0 +1,16 @@
+en:
+  label_collabora_settings: "Collabora Online Settings"
+  label_collabora_url: "Collabora Server URL"
+  label_wopi_host: "Internal WOPI Host"
+  label_collabora_view: "View in Collabora"
+  label_collabora_edit: "Edit in Collabora"
+  label_collabora_editing: "Editing"
+  label_collabora_not_configured: "Collabora Online is not configured. Please configure the server URL in plugin settings."
+  label_enable_collabora: "Enable Collabora Online"
+  label_supported_formats: "Supported Formats"
+
+  help_collabora_url: "The URL to your Collabora Online server (e.g., https://office.abellardss.co.za)"
+  help_enable_collabora: "Enable or disable the Collabora Online integration"
+
+  text_supported_formats: "The following document formats are supported for viewing and editing in Collabora Online:"
+  text_permissions_info: "Document access is controlled by Redmine permissions managed through <strong>Administration > Roles and permissions</strong>. The relevant permissions are:<br>• <strong>View attachments</strong> (allows users to see attachments)<br>• <strong>Download attachments</strong> (allows users to download files)<br>• <strong>Manage files</strong> (allows project managers to manage attachments)."
