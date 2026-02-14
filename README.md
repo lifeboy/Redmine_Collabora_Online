@@ -97,12 +97,12 @@ Navigate to **Administration** → **Plugins** → **Collabora Online**
 
 #### Collabora Server URL
 - **Required**: Yes
-- **Default**: `https://office.abellardss.co.za`
+- **Default**: `https://office.myserver.com`
 - **Description**: The URL to your Collabora Online instance
 - **Format**: Must be a valid HTTPS URL
 
 **Note**: If the domain of the collabora server and redmine differ, browsers will block the call due to cross-domain scripting prevention.  
-While that are ways to alows this, the easiest way to use the same domain for both,  ie redmine.myserver.com and collarabora.myserver.com.
+While that are ways to alows this, the easiest way to use the same domain for both,  ie https://redmine.myserver.com and https://collarabora.myserver.com.
 
 #### Enable Collabora Online
 - **Type**: Boolean
