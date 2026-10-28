@@ -353,7 +353,7 @@ This plugin is part of the Redmine installation.
 
 ## Changelog
 
-### Versopm 1.0.2 (2025-12-29)
+### Version 1.0.2 (2025-12-29)
 - Fix saving documents back to Redmine after editing them.
 
 ### Version 1.0.1 (2025-12-28)
